@@ -36,4 +36,4 @@ What started as a frustrated pause during a Prime Video episode turned into an e
 
 *Written by Sanjana Shah — a software engineer who got a little too curious about a Prime Video ad break.*
 
-📎 [LinkedIn](https://linkedin.com/in/shahsanju)
+📎 [LinkedIn](https://www.linkedin.com/in/sanjana-s-shah/)
