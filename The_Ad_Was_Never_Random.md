@@ -134,7 +134,7 @@ Based on what we have covered so far, the timestamp with the highest scores beco
 
 So, a timestamp scoring 0.5 might still get an Ad if it's the only viable candidate in a long quiet stretch. A timestamp scoring 0.95 might get skipped because an Ad already ran 5 minutes ago.
 
-> *Think of it less like a pass/fail score and more like a competition — the winning timestamp is simply the one that scores highest among all candidates that don't break any business rule at that moment, for that specific viewer.*
+> *Think of it less like a pass/fail score and more like a competition — the winning timestamp is simply the one that scores highest among all candidates that don't break any business rule at that moment, **for that specific viewer.***
 
 That last part — ***for that specific viewer*** — is actually where things get really interesting. Because what I just described isn't a static process running the same way for everyone. It's running separately, in real time, for every single person who presses play.
 
