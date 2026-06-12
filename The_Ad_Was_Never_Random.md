@@ -26,7 +26,7 @@ Here is what is really happening: the content and the ads are **completely separ
 
 But for an Ad to be stitched in at a specific moment, the system first needs to know —
 
-> ***where in the video can an Ad even go?***
+### ***where in the video can an Ad even go?***
 
 That's where something called **SCTE-35 markers** come in. Think of SCTE-35 (Society of Cable and Telecommunications Engineers, standard 35) markers as invisible flags that sit at specific timestamps inside a video file. You'll never see them — they don't appear on screen. But they tell the system: *"this timestamp is a strong candidate for an ad."*
 
@@ -54,9 +54,9 @@ For content where markers weren't pre-placed, or to supplement existing ones, on
 
 The video file you receive as a viewer is actually a container format — something like MP4 or MKV — that bundles multiple separate tracks inside it:
 
-- An audio track — the compressed sound
-- A video track — the compressed frames
-- A subtitle or dialogue track — timestamped text
+I. An audio track — the compressed sound
+II. A video track — the compressed frames
+III. A subtitle or dialogue track — timestamped text
 
 An AI analysis system can unpack these and examine each one separately, using completely different AI models for each track. Here's how:
 
@@ -91,23 +91,20 @@ Subtitles come embedded as **SRT or WebVTT format** — basically timestamped te
 Amazon's own advertising documentation[[4]](https://advertising.amazon.com/en-gb/library/news/ai-pause-format-prime-video) confirms their system uses AI to analyze viewing content. What I find interesting as an engineer is that this is essentially three different AI models — audio, vision, and language — working in parallel on the same file.
 
 ```
-One video file (MP4 / MKV)
-         |
-         v
-   Unpacked into tracks
-   |           |           |
-   v           v           v
- Audio       Video      Subtitles
+    One video file (MP4 / MKV)
+                |
+     Unpacked into tracks
+    |           |           |
+  Audio       Video      Subtitles
 (CNN/RNN)  (CNN Vision)  (NLP Model)
    |           |           |
    +-----+-----+-----+-----+
                |
-               v
      Tension score per second
                |
-               v
-      Candidate Ad moments identified
+ Candidate Ad moments identified
 ```
+
 
 ### 3. Behavior Pattern
 
@@ -160,26 +157,24 @@ And the ads themselves? Also personalized. Every time your stream hits a candida
 ```
   You press play              Friend presses play
        |                             |
-       v                             v
   Your profile                 Their profile
   Your history                 Their history
        |                             |
-       v                             v
   Ad decision engine           Ad decision engine
   (runs in real time)          (runs in real time)
        |                             |
-       v                             v
   Ad stitched @ 15:23          Ad stitched @ 22:47
        |                             |
-       v                             v
-  Your stream                  Their stream
+   Your stream                  Their stream
   (same content,               (same content,
-   different Ad timing)         different Ad timing)
+different Ad timing)         different Ad timing)
 ```
 
 So, your stream and your friend's stream contain the same show — but they're fundamentally different files, assembled on the fly, unique to each of you.
 
-But this raises a deeper question — **why does all of this personalization exist in the first place? What is Amazon actually trying to achieve with where the Ad lands?**
+But this raises a deeper question — 
+
+**why does all of this personalization exist in the first place? What is Amazon actually trying to achieve with where the Ad lands?**
 
 The Ad system is built to make sure the viewer doesn't quit when the Ad hits during video. A peak moment (higher tension score) in the video holds curiosity and gives some kind of guarantee that if the ads are placed where they are, the viewer will sit through the Ad and continue to watch remaining video. But is it really that simple? I went back to check.
 
@@ -195,7 +190,7 @@ The pattern we actually traced:
 
 > *First Ad → landed at peak tension, most of the time. Remaining ads → either peak tension or at not-so-important scenes.*
 
-> ***So, if the pattern is inconsistent — is our original observation wrong?***
+***So, if the pattern is inconsistent — is our original observation wrong?***
 
 One obvious explanation: maybe there simply aren't enough tension peaks evenly spread across a 60-minute episode to fill all Ad slots. Business rules demand spacing, so the system uses whatever clean moments are available. It's a reasonable answer — but not a satisfying one.
 
@@ -203,7 +198,7 @@ I kept thinking. What if this specific pattern — first Ad at tension, rest at 
 
 If we accept that framing, then there are two kinds of Ad markers at play: one positioned at peak tension moments, and another could be positioned at scene transitions (tension score of scene transition is also comparatively high). But even that doesn't fully explain why transition-point ads should exist. Because if an Ad comes at a scene transition, at that moment viewer's curiosity is low — it's a natural moment to pause or quit the video. From a business standpoint, that looks like lost revenue.
 
-> ***Why would you place an Ad where the viewer is most likely to stop watching?***
+***Why would you place an Ad where the viewer is most likely to stop watching?***
 
 So, I dug deeper. And eventually I came up with my own reasoning that supports the pattern we are observing right now. It has two parts.
 
@@ -257,12 +252,13 @@ Think about what happens next. A viewer who left mid-episode:
 
 Now compare this to a viewer who watched the whole episode in one sitting:
 
-- **Viewer A:** watches the full episode straight through. 4 Ad breaks. Done.
-- **Viewer B:** quits at the 25-minute mark (having seen 1 peak tension Ad and 1 transition ad). Returns next day. Finishes the episode (2 more Ad breaks), then starts the next episode (4 more Ad breaks).
+**Viewer A:** watches the full episode straight through. 4 Ad breaks. Done.
+
+**Viewer B:** quits at the 25-minute mark (having seen 1 peak tension Ad and 1 transition ad). Returns next day. Finishes the episode (2 more Ad breaks), then starts the next episode (4 more Ad breaks).
 
 Viewer B generated **double the watch time and double the Ad revenue** — not despite leaving, but because they left.
 
-This connects to something called the **Ovsiankina Effect**[[7]](https://www.nature.com/articles/s41599-025-05000-w) — the well-researched human tendency to resume interrupted tasks.
+> This connects to something called the **Ovsiankina Effect**[[7]](https://www.nature.com/articles/s41599-025-05000-w) — the well-researched human tendency to resume interrupted tasks.
 
 Amazon doesn't need you to remember episode details — it does that for you through your watch history. They just need your brain to keep that unfinished tab open and bring you back.
 
@@ -306,8 +302,6 @@ According to me, the tension-peak placement logic should theoretically weaken on
 
 I don't have a confident answer yet. If you've noticed a difference when rewatching something, I'd genuinely like to know.
 
----
-
 ## The Full Picture: From Creator to Your Screen
 
 Pulling everything together, here's what I think the lifecycle of Ad placement probably looks like for a typical Prime Video show:
@@ -316,27 +310,6 @@ Pulling everything together, here's what I think the lifecycle of Ad placement p
 - **Day 1–3 (launch):** Millions of viewers hit those creator-placed markers simultaneously. Amazon starts collecting massive amounts of real behavioral data — pauses, rewinds, drop-offs
 - **Day 4–7:** Amazon compares creator intent against actual viewer reactions. Where the data diverges from the markers, the system starts adjusting
 - **Week 2 onward:** Behavioral data increasingly takes over. Placement is now crowd-sourced and continuously refined, layered with each viewer's personal profile
-
-```
-  PRE-RELEASE
-  Creator embeds SCTE-35 markers at emotional peaks
-         |
-         v
-  DAY 1-3  (launch + publicity)
-  Millions watch -> hit creator markers
-  Behavioral data floods in at massive scale
-         |
-         v
-  DAY 4-7
-  Amazon checks: did viewers react at creator markers?
-  If yes -> confirm them
-  If no  -> behavioral data suggests better moments, adjust
-         |
-         v
-  WEEK 2 ONWARD
-  Behavioral data dominates
-  Placement refined continuously per viewer profile
-```
 
 The system is always simultaneously asking two questions:
 
