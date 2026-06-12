@@ -12,7 +12,7 @@ This article began with a simple question:
 
 *Why do Prime Video ads always seem to appear at the exact moment when I am most invested in the story?*
 
-What started as a small moment of frustration turned into a much deeper investigation into how modern streaming platforms deliver advertisements. Along the way, I explored server-side ad insertion (SSAI), SCTE-35 markers, AI-based content analysis, viewer behavior signals, real-time ad auctions, and the business decisions that shape the streaming experience.
+What started as a small moment of frustration turned into a much deeper research into how modern streaming platforms deliver advertisements. Along the way, I explored server-side ad insertion (SSAI), SCTE-35 markers, AI-based content analysis, viewer behavior signals, real-time ad auctions, and the business decisions that shape the streaming experience.
 
 The deeper I looked, the more I realized that an advertisement appearing at the "worst possible moment" might not be a coincidence at all.
 
