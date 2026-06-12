@@ -54,9 +54,9 @@ For content where markers weren't pre-placed, or to supplement existing ones, on
 
 The video file you receive as a viewer is actually a container format — something like MP4 or MKV — that bundles multiple separate tracks inside it:
 
-I. An audio track — the compressed sound
-II. A video track — the compressed frames
-III. A subtitle or dialogue track — timestamped text
+I. An audio track — the compressed sound  
+II. A video track — the compressed frames  
+III. A subtitle or dialogue track — timestamped text  
 
 An AI analysis system can unpack these and examine each one separately, using completely different AI models for each track. Here's how:
 
