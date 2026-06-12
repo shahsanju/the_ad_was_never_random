@@ -198,7 +198,7 @@ I kept thinking. What if this specific pattern — first Ad at tension, rest at 
 
 If we accept that framing, then there are two kinds of Ad markers at play: one positioned at peak tension moments, and another could be positioned at scene transitions (tension score of scene transition is also comparatively high). But even that doesn't fully explain why transition-point ads should exist. Because if an Ad comes at a scene transition, at that moment viewer's curiosity is low — it's a natural moment to pause or quit the video. From a business standpoint, that looks like lost revenue.
 
-***Why would you place an Ad where the viewer is most likely to stop watching?***
+### ***Why would you place an Ad where the viewer is most likely to stop watching?***
 
 So, I dug deeper. And eventually I came up with my own reasoning that supports the pattern we are observing right now. It has two parts.
 
