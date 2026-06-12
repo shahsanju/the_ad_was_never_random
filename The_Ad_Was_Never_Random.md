@@ -363,4 +363,4 @@ And if the next time an Ad hits right at a cliffhanger you find yourself thinkin
 
 ---
 
-*Written by Sanjana Shah — a software engineer who got a little too curious about a Prime Video Ad break.*
+*Written by Sanjana Shah — a Software Engineer who got a little too curious about a Prime Video Ad break.*
