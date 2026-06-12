@@ -69,7 +69,7 @@ The trained audio model converts the soundtrack into something called a **spectr
 - Voice stress — raised voices, whispering, emotional speech patterns
 - Suspenseful sound design: heartbeats, drones, sudden loud cuts
 
-The model essentially learns: *"this type of audio = tension = this is a good candidate for an Ad break."*
+> The model essentially learns: *"this type of audio = tension = this is a good candidate for an Ad break."*
 
 #### II. The Video Track — What the Frames Are Actually Saying
 
