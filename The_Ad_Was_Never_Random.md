@@ -30,7 +30,7 @@ But for an Ad to be stitched in at a specific moment, the system first needs to 
 
 That's where something called **SCTE-35 markers** come in. Think of SCTE-35 (Society of Cable and Telecommunications Engineers, standard 35) markers as invisible flags that sit at specific timestamps inside a video file. You'll never see them — they don't appear on screen. But they tell the system: *"this timestamp is a strong candidate for an ad."*
 
-> *So, the real question is not just how ads get inserted — it's worth asking who placed those invisible flags, and why did they put them exactly where they did?*
+   > *So, the real question is not just how ads get inserted — it's worth asking who placed those invisible flags, and why did they put them exactly where they did?*
 
 ---
 
